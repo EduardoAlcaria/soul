@@ -22,6 +22,14 @@ export function db(): Database.Database {
   return _db;
 }
 
+export function _resetForTest(): Database.Database {
+  const inMem = new Database(':memory:');
+  inMem.pragma('journal_mode = WAL');
+  migrate(inMem);
+  _db = inMem;
+  return inMem;
+}
+
 function migrate(db: Database.Database): void {
   db.exec(`
     CREATE TABLE IF NOT EXISTS sessions (
