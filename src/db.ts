@@ -9,9 +9,14 @@ let _db: Database.Database | undefined;
 export function db(): Database.Database {
   if (!_db) {
     const fs = require('fs');
-    fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
+    fs.mkdirSync(path.dirname(DB_PATH), { recursive: true, mode: 0o700 });
+    try { fs.chmodSync(path.dirname(DB_PATH), 0o700); } catch {}
     _db = new Database(DB_PATH);
+    try { fs.chmodSync(DB_PATH, 0o600); } catch {}
     _db.pragma('journal_mode = WAL');
+    for (const suffix of ['-wal', '-shm']) {
+      try { fs.chmodSync(DB_PATH + suffix, 0o600); } catch {}
+    }
     migrate(_db);
   }
   return _db;
