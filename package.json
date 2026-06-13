@@ -1,0 +1,26 @@
+{
+  "name": "soul",
+  "version": "0.1.0",
+  "description": "Eduardo's coding brain map — keystroke recorder, profiler, and identity extractor",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "extract": "ts-node src/cli.ts extract",
+    "test": "echo \"no tests yet\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "better-sqlite3": "^12.10.1"
+  }
+}
