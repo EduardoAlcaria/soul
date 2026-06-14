@@ -43,7 +43,7 @@ test('delete increments error count', () => {
   for (let i = 0; i < 5; i++) {
     rec.record({ ts: BASE_TS + i * 50, char: 'a', isDelete: false, context: 'identifier', line: 1, col: i });
   }
-  rec.record({ ts: BASE_TS + 300, char: '', isDelete: true, context: 'identifier', line: 1, col: 4 });
+  rec.record({ ts: BASE_TS + 250, char: '', isDelete: true, context: 'identifier', line: 1, col: 4 });
   rec.stop();
   const burst = d.prepare('SELECT error_count FROM bursts LIMIT 1').get() as { error_count: number };
   expect(burst.error_count).toBe(1);
