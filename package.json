@@ -7,8 +7,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node src/index.ts",
-    "extract": "ts-node src/cli.ts extract",
-    "test": "jest",
+"test": "jest",
     "test:watch": "jest --watch"
   },
   "keywords": [],
