@@ -47,7 +47,7 @@ def fit_or_prior(ikis: list[float]) -> CategoricalHMM:
         return _make_prior_model()
 
     obs = np.array([quantize_iki(x) for x in ikis]).reshape(-1, 1)
-    model = CategoricalHMM(n_components=_N_STATES, n_iter=50, random_state=42)
+    model = CategoricalHMM(n_components=_N_STATES, n_iter=50, random_state=42, init_params='')
     model.startprob_ = _PRIOR_START.copy()
     model.transmat_ = _PRIOR_TRANS.copy()
     model.emissionprob_ = _PRIOR_EMIT.copy()
