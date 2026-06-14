@@ -49,11 +49,13 @@ export class Recorder {
       this.burstStart = ev.ts;
       this.burstChars = 0;
       this.burstErrors = 0;
+      this.burstContext = 'other';
     } else if (gap >= MICRO_PAUSE_MS && this.lastTs > 0) {
       this.flushBurst(ev.ts - gap);
       this.burstStart = ev.ts;
       this.burstChars = 0;
       this.burstErrors = 0;
+      this.burstContext = 'other';
     }
 
     db().prepare(
